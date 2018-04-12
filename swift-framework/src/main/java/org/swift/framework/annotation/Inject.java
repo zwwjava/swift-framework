@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 
+ * 依赖注入
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
