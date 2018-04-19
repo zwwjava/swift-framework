@@ -16,6 +16,13 @@
             <artifactId>swift-framework</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <!-- jxl -->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
     </dependencies>
 
 
