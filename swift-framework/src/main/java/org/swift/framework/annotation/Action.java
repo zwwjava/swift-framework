@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Action方法
+ * 例子： “get:/customer”
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

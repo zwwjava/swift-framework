@@ -4,12 +4,13 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
+ * 请求路径，方法
  * create by ww
  **/
 public class Request {
 
     /**
-     * 请求方法
+     * 请求方法类型：get，post...
      */
     private String requestMethod;
 

@@ -29,8 +29,11 @@ public class ClassUtil {
         return Thread.currentThread().getContextClassLoader();
     }
 
+    public static Class<?> loadClass(String className) {
+        return loadClass(className, true);
+    }
     /**
-     * 加载并返回类
+     * 加载初始化并返回类
      * @param className
      * @param initialized
      * @return
