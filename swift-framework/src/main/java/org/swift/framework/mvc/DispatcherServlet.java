@@ -11,6 +11,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,7 @@ import java.util.Map;
  * 请求分发器
  * create by ww
  **/
+@WebServlet(urlPatterns =  "/*", loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet {
 
     @Override

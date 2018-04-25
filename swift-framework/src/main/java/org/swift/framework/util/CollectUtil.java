@@ -9,7 +9,7 @@ import java.util.Map;
 public class CollectUtil {
 
     public static boolean isEmpty(Collection<?> collection) {
-        return CollectUtil.isEmpty(collection);
+        return collection.isEmpty();
     }
 
     public static boolean isNotEmpty(Collection<?> collection) {

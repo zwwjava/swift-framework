@@ -1,22 +1,20 @@
 package org.swift.chapter.service;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.swift.chapter.helper.DataBaseHelper;
 import org.swift.chapter.model.Customer;
-import org.smart4j.chapter.util.PropUtil;
+import org.swift.framework.annotation.Service;
 
 /**
  * 客户服务
  * @author 旺旺
  *
  */
+@Service
 public class CustomerService {
 
 	private static final Logger logger = LoggerFactory.getLogger(CustomerService.class);

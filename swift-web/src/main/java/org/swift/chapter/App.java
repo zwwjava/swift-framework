@@ -1,8 +1,7 @@
-package org.smart4j.chapter;
+package org.swift.chapter;
 
 /**
  * Hello world!
- *
  */
 public class App 
 {

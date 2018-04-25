@@ -67,7 +67,7 @@ public class ClassUtil {
                     if(protocol != null && protocol.equals("file")) {
                         String packageUrl = url.getPath().replace("%20"," ");//替换空格
                         //递归添加子类的包的类
-                        addClass(classSet, packageUrl, packageName);
+                        addClass(classSet, packageUrl, "");
                     } else if(protocol != null && protocol.equals("jar")) {
                         JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
                         if(jarURLConnection != null) {
@@ -112,17 +112,17 @@ public class ClassUtil {
             if (file.isFile()) {
                 String className = fileName.substring(0, fileName.lastIndexOf("."));
                 if(StringUtil.isNotEmpty(packageName)) {
-                    className = packageName + className;
+                    className = packageName  + "." + className;
                 }
                 doAddClass(classSet, className);
             } else {
                 String subPackagePath = fileName;
                 if (StringUtil.isNotEmpty(packageUrl)) {
-                    subPackagePath = packageName + subPackagePath;
+                    subPackagePath = packageUrl + "/" + subPackagePath;
                 }
                 String subPackageName = fileName;
                 if(StringUtil.isNotEmpty(packageName)) {
-                    subPackageName = packageName + subPackageName;
+                    subPackageName = packageName + "." +  subPackageName;
                 }
                 //递归添加子文件
                 addClass(classSet, subPackagePath, subPackageName);

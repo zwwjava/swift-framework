@@ -7,11 +7,10 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.swift.chapter.util.CollectUtil;
-import org.swift.chapter.util.PropUtil;
+import org.swift.framework.util.CollectUtil;
+import org.swift.framework.util.PropUtil;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
