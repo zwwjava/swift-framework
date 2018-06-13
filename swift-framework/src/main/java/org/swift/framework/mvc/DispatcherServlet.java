@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -80,6 +81,8 @@ public class DispatcherServlet extends HttpServlet {
             Param param = new Param(paramMap);
             //调用action方法
             Method action = handler.getActionMethod();
+            //java1.8新增属性 可通过形参名 反射默认值
+            //Parameter[] parameters = action.getParameters();
             Object result = ReflectionUtil.invokeMethod(controllerBean, action, param);
             //处理action方法返回值
             if (result instanceof View) {
