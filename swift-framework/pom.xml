@@ -76,6 +76,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collection4</artifactId>
+            <version>4.0</version>
         </dependency>
         <!--DBUtil-->
         <dependency>
