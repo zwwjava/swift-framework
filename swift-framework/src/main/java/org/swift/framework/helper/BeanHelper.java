@@ -46,4 +46,13 @@ public class BeanHelper {
         return BEAN_REGISTER.get(clazz);
     }
 
+    /**
+     * 从注册中心添加bean实例
+     * @param clazz
+     * @return
+     */
+    public static void putBeanInstance(Class<?> clazz, Object obj) {
+        BEAN_REGISTER.put(clazz, obj);
+    }
+
 }

@@ -5,6 +5,7 @@ import org.swift.framework.annotation.Inject;
 import org.swift.framework.annotation.Service;
 import org.swift.framework.util.ClassUtil;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -74,5 +75,32 @@ public class ClassHelper {
         return beanSet;
     }
 
+    /**
+     * 拿到引用包名下某父类（或接口）的所有子类（或实现类）
+     * @return
+     */
+    public static Set<Class<?>> getClassSetBySuper(Class<?> superClass) {
+        Set<Class<?>> beanSet = new HashSet<Class<?>>();
+        for (Class<?> clazz: CLASS_SET) {
+            if (superClass.isAssignableFrom(clazz) && !superClass.equals(clazz)) {
+                beanSet.add(clazz);
+            }
+        }
+        return beanSet;
+    }
+
+    /**
+     * 拿到带有某注解的所有类
+     * @return
+     */
+    public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotationClass) {
+        Set<Class<?>> beanSet = new HashSet<Class<?>>();
+        for (Class<?> clazz: CLASS_SET) {
+            if (clazz.isAnnotationPresent(annotationClass)) {
+                beanSet.add(clazz);
+            }
+        }
+        return beanSet;
+    }
 
 }

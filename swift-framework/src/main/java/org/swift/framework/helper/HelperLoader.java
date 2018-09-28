@@ -19,6 +19,7 @@ public class HelperLoader {
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
+                AopHelper.class,
                 ControllerHelper.class,
                 IocHelper.class
         };
