@@ -1,6 +1,7 @@
 package org.swift.framework.mvc;
 
 import org.swift.framework.util.CastUtil;
+import org.swift.framework.util.CollectUtil;
 
 import java.util.Map;
 
@@ -31,5 +32,9 @@ public class Param {
      */
     public Map<String, Object> getParamMap() {
         return paramMap;
+    }
+
+    public boolean isEmpty() {
+        return CollectUtil.isEmpty(paramMap);
     }
 }

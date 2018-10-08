@@ -1,4 +1,4 @@
-package org.swift.chapter.helper;
+package org.swift.framework.helper;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
@@ -23,7 +23,7 @@ public final class DataBaseHelper {
     //private static Connection conn;
     //apache提供的一个工具，通过反射把查询出的数据实体化
     private static final QueryRunner queryRunner;
-    //
+    //每个线程享有独立的连接
     private static final ThreadLocal<Connection> CONNECTION_REGISTER;
     private static final BasicDataSource DATA_SOURCE;
 
@@ -55,7 +55,56 @@ public final class DataBaseHelper {
             logger.error(e.getMessage());
             e.printStackTrace();
         }
+    }
 
+    /**
+     * 开启事物
+     */
+    public static void beginTransaction() {
+        Connection connection = getConnection();
+        if (connection != null) {
+            try {
+                connection.setAutoCommit(false);
+            } catch (SQLException e) {
+                logger.error("开启事物处理失败");
+            } finally {
+                CONNECTION_REGISTER.set(connection);
+            }
+        }
+    }
+
+    /**
+     * 提交事物
+     */
+    public static void commitTransaction() {
+        Connection connection = getConnection();
+        if (connection != null) {
+            try {
+                connection.commit();
+                connection.close();
+            } catch (SQLException e) {
+                logger.error("提交事物处理失败");
+            } finally {
+                CONNECTION_REGISTER.remove();
+            }
+        }
+    }
+
+    /**
+     * 回滚事物
+     */
+    public static void rollbackTransaction() {
+        Connection connection = getConnection();
+        if (connection != null) {
+            try {
+                connection.rollback();
+                connection.close();
+            } catch (SQLException e) {
+                logger.error("回滚事物处理失败");
+            } finally {
+                CONNECTION_REGISTER.remove();
+            }
+        }
     }
 
     /**

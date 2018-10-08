@@ -83,7 +83,13 @@ public class DispatcherServlet extends HttpServlet {
             Method action = handler.getActionMethod();
             //java1.8新增属性 可通过形参名 反射默认值
             //Parameter[] parameters = action.getParameters();
-            Object result = ReflectionUtil.invokeMethod(controllerBean, action, param);
+            Object result;
+            if (param.isEmpty()) {
+                result = ReflectionUtil.invokeMethod(controllerBean, action);
+            } else {
+                result = ReflectionUtil.invokeMethod(controllerBean, action, param);
+            }
+
             //处理action方法返回值
             if (result instanceof View) {
                 View view = (View) result;
