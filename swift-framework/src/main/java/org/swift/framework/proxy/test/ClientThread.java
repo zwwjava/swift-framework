@@ -1,5 +1,7 @@
 package org.swift.framework.proxy.test;
 
+import org.swift.framework.test.Squence;
+
 /**
  * @Description -
  * @Author zww
