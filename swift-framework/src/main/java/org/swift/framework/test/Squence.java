@@ -1,4 +1,4 @@
-package org.swift.framework.proxy.test;
+package org.swift.framework.test;
 
 /**
  * @Description -
