@@ -1,6 +1,5 @@
 package org.swift.framework.helper;
 
-import com.sun.deploy.util.ArrayUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.swift.framework.annotation.Inject;
 import org.swift.framework.util.CollectUtil;

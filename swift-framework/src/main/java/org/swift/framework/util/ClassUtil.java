@@ -2,6 +2,7 @@ package org.swift.framework.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.swift.framework.helper.ConfigHelper;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -59,7 +60,7 @@ public class ClassUtil {
         Set<Class<?>> classSet = new HashSet<Class<?>>();
         try {
             //获取所有资源
-            Enumeration<URL> urls = getClassLoader().getResources(packageName.replaceAll(".", "/"));
+            Enumeration<URL> urls = getClassLoader().getResources(packageName.replaceAll("\\.", "/"));
             while (urls.hasMoreElements()) {
                 URL url = urls.nextElement();
                 if (url != null) {
@@ -68,7 +69,7 @@ public class ClassUtil {
                     if(protocol != null && protocol.equals("file")) {
                         String packageUrl = url.getPath().replace("%20"," ");//替换空格
                         //递归添加子类的包的类
-                        addClass(classSet, packageUrl, "");
+                        addClass(classSet, packageUrl, ConfigHelper.getAppBasePackage());
                     } else if(protocol != null && protocol.equals("jar")) {
                         JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
                         if(jarURLConnection != null) {

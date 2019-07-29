@@ -85,7 +85,7 @@ public class DispatcherServlet extends HttpServlet {
             //Parameter[] parameters = action.getParameters();
             Object result;
             if (param.isEmpty()) {
-                result = ReflectionUtil.invokeMethod(controllerBean, action);
+                result = ReflectionUtil.invokeMethod(controllerBean, action, new Param());
             } else {
                 result = ReflectionUtil.invokeMethod(controllerBean, action, param);
             }
