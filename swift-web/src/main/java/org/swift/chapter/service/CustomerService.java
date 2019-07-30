@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.swift.chapter.model.Customer;
+import org.swift.chapter.model.Weather;
 import org.swift.framework.annotation.Service;
 import org.swift.framework.helper.DataBaseHelper;
 
@@ -22,8 +23,16 @@ public class CustomerService {
 	/*
 	 * 获取客户列表
 	 */
+	public List<Weather> getWeatherList() {
+		String sql = "SELECT * FROM weather";
+		List<Weather> customerList = DataBaseHelper.queryEntityList(Weather.class, sql);
+		return customerList;
+	}
+
+	/*
+	 * 获取客户列表
+	 */
 	public List<Customer> getCustomerList() {
-		//TODO
 		String sql = "SELECT * FROM CUSTOMER";
 		List<Customer> customerList = DataBaseHelper.queryEntityList(Customer.class, sql);
 		/*try {

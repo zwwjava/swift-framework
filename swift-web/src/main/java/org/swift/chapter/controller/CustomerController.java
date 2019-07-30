@@ -1,6 +1,7 @@
 package org.swift.chapter.controller;
 
 import org.swift.chapter.model.Customer;
+import org.swift.chapter.model.Weather;
 import org.swift.chapter.service.CustomerService;
 import org.swift.framework.annotation.Action;
 import org.swift.framework.annotation.Controller;
@@ -17,7 +18,10 @@ public class CustomerController {
 
     @Action(value = "get:/hello")
     public void hello(Param param) {
-        List<Customer> list = customerService.getCustomerList();
+        List<Weather> list = customerService.getWeatherList();
+        for (Weather weather : list) {
+            System.out.println(weather);
+        }
         System.out.println("hello " + list.size());
     }
 

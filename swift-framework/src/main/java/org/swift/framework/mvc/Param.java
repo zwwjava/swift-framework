@@ -13,6 +13,10 @@ public class Param {
 
     private Map<String, Object> paramMap;
 
+    public Param() {
+        this.paramMap = null;
+    }
+
     public Param(Map<String, Object> paramMap) {
         this.paramMap = paramMap;
     }
