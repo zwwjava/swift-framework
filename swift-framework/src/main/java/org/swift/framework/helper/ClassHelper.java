@@ -18,6 +18,7 @@ public class ClassHelper {
     private static final Set<Class<?>> CLASS_SET;
 
     /**
+     * 在初始化类时，需要先执行静态区的代码
      * 获取包名下所有类
      */
     static {

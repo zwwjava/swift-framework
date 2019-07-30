@@ -37,11 +37,11 @@ public final class DataBaseHelper {
         CONNECTION_REGISTER = new ThreadLocal<Connection>();
         DATA_SOURCE = new BasicDataSource();
 
-        Properties conf = PropUtil.loadProps("config.properties");
-        DRIVER = conf.getProperty("jdbc.driver");
-        URL = conf.getProperty("jdbc.url");
-        USERNAME = conf.getProperty("jdbc.username");
-        PASSWORD = conf.getProperty("jdbc.password");
+        Properties conf = PropUtil.loadProps("swift.properties");
+        DRIVER = conf.getProperty("swift.framework.jdbc.driver");
+        URL = conf.getProperty("swift.framework.jdbc.url");
+        USERNAME = conf.getProperty("swift.framework.jdbc.username");
+        PASSWORD = conf.getProperty("swift.framework.jdbc.password");
         DATA_SOURCE.setDriverClassName(DRIVER);
         DATA_SOURCE.setUrl(URL);
         DATA_SOURCE.setUsername(USERNAME);
