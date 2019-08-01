@@ -33,13 +33,13 @@ public class TransactionProxy implements Proxy {
             FLAG_HOLDER.set(true);
             try {
                 DataBaseHelper.beginTransaction();
-                logger.debug("开启事物");
+                logger.info("开启事物");
                 result = proxyChain.doProxyChain();
                 DataBaseHelper.commitTransaction();
-                logger.debug("提交事物");
+                logger.info("提交事物");
             } catch (Exception e) {
                  DataBaseHelper.rollbackTransaction();
-                 logger.debug("事物回滚");
+                 logger.info("事物回滚");
                  throw e;
             } finally {
                 FLAG_HOLDER.remove();
