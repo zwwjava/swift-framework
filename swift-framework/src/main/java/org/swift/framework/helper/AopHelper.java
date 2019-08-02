@@ -7,6 +7,7 @@ import org.swift.framework.annotation.Service;
 import org.swift.framework.proxy.AspecProxy;
 import org.swift.framework.proxy.Proxy;
 import org.swift.framework.proxy.ProxyManager;
+import org.swift.framework.proxy.TransactionProxy;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -61,7 +62,8 @@ public class AopHelper {
 
     //添加事物代理
     private static void addTransaction(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
-        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetBySuper(Service.class);
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class, serviceClassSet);
     }
 
     private static Set<Class<?>> createTargetClassSet(Aspect aspect) throws Exception {

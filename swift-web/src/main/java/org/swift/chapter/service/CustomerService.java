@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.swift.chapter.model.Customer;
 import org.swift.chapter.model.Weather;
 import org.swift.framework.annotation.Service;
+import org.swift.framework.annotation.Transaction;
 import org.swift.framework.helper.DataBaseHelper;
 
 /**
@@ -70,8 +71,9 @@ public class CustomerService {
 	/*
 	 * 创建客户
 	 */
+	@Transaction
 	public boolean createCustomer(Map<String, Object> customerMap) {
-		return DataBaseHelper.insertEntity(Customer.class,customerMap);
+		return DataBaseHelper.insertEntity(Weather.class,customerMap);
 	}
 	
 	/*

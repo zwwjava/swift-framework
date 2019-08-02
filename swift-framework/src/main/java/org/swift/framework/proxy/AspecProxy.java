@@ -41,7 +41,9 @@ public abstract class AspecProxy implements Proxy {
     }
 
     public boolean intercept(Class<?> cls, Method method, Object[] params) throws Exception {
-        return true;
+        String methodName = method.getName();
+        if (!methodName.equals("toString") || !methodName.equals("hashCode"))  return true;
+        return false;
     }
 
     private void begin() {
