@@ -6,7 +6,9 @@ import org.swift.chapter.service.CustomerService;
 import org.swift.framework.annotation.Action;
 import org.swift.framework.annotation.Controller;
 import org.swift.framework.annotation.Inject;
+import org.swift.framework.mvc.Data;
 import org.swift.framework.mvc.Param;
+import org.swift.framework.mvc.View;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +21,13 @@ public class CustomerController {
     private CustomerService customerService;
 
     @Action(value = "get:/hello")
-    public void hello(Param param) {
+    public Data hello(Param param) {
         List<Weather> list = customerService.getWeatherList();
         for (Weather weather : list) {
             System.out.println(weather);
         }
         System.out.println("hello " + list.size());
+        return new Data(list);
     }
 
     @Action(value = "get:/createHello")
@@ -35,7 +38,6 @@ public class CustomerController {
         customerMap.put("w_detail", "多云");
         customerMap.put("w_temperature_low", "34");
         customerMap.put("w_temperature_high", "26℃");
-
         System.out.println("create hello " + customerService.createCustomer(customerMap));
     }
 
