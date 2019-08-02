@@ -7,18 +7,18 @@ package org.swift.chapter.model;
  */
 public class Weather {
 
-    private int wId;
+    private int w_id;
     private String w_date;
     private String w_detail;
     private String w_temperature_low;
     private String w_temperature_high;
 
-    public int getwId() {
-        return wId;
+    public int getW_id() {
+        return w_id;
     }
 
-    public void setwId(int wId) {
-        this.wId = wId;
+    public void setW_id(int w_id) {
+        this.w_id = w_id;
     }
 
     public String getW_date() {

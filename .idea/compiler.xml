@@ -6,9 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="swift-framework" />
+        <module name="swift-web" />
         <module name="swiftframework" />
         <module name="swiftweb" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="swift" target="1.5" />
+      <module name="swift-framework" target="1.8" />
+      <module name="swift-web" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

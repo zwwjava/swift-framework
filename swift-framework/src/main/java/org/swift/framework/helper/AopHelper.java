@@ -7,6 +7,7 @@ import org.swift.framework.annotation.Service;
 import org.swift.framework.proxy.AspecProxy;
 import org.swift.framework.proxy.Proxy;
 import org.swift.framework.proxy.ProxyManager;
+import org.swift.framework.proxy.TransactionProxy;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -22,7 +23,9 @@ public class AopHelper {
 
     static {
         try {
+            //每个代理类 对应的多个被代理类
             Map<Class<?>, Set<Class<?>>> proxyMap = createProxyMap();
+            //每个被代理类 对应的多个代理对象
             Map<Class<?>, List<Proxy>> targetMap = createTargetMap(proxyMap);
             for (Map.Entry<Class<?>, List<Proxy>> targetEntry : targetMap.entrySet()) {
                 Class<?> targetClass = targetEntry.getKey();
@@ -46,7 +49,7 @@ public class AopHelper {
     }
 
     //添加切面代理
-    private static void addTransaction(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
+    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspecProxy.class);
         for (Class<?> proxyClass : proxyClassSet) {
             if (proxyClass.isAnnotationPresent(Aspect.class)) {
@@ -58,8 +61,9 @@ public class AopHelper {
     }
 
     //添加事物代理
-    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
-        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetBySuper(Service.class);
+    private static void addTransaction(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class, serviceClassSet);
     }
 
     private static Set<Class<?>> createTargetClassSet(Aspect aspect) throws Exception {

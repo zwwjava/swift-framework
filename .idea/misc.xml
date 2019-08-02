@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/../swift/swift-web" />
+    <file type="web" url="file://$PROJECT_DIR$/swift-web" />
+    <file type="web" url="file://D:/swift/swift-web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/../swift/pom.xml" />
+        <option value="D:/swift/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/../swift/out" />
+    <output url="file://D:/swift/out" />
   </component>
 </project>
