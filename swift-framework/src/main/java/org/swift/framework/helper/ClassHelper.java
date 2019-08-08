@@ -11,6 +11,7 @@ import java.util.Set;
 
 /**
  * 解析包下Class文件
+ * 用来存放项目根目录下所有的类的class信息
  * create by ww
  **/
 public class ClassHelper {

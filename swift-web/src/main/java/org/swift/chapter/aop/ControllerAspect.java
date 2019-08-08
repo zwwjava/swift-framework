@@ -21,15 +21,15 @@ public class ControllerAspect extends AspecProxy {
 
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Exception {
-        logger.info("-------------begin----------");
-        logger.info(String.format("class : %s", cls.getName()));
-        logger.info(String.format("method : %s", method.getName()));
+        logger.info("项目管家：-------------begin----------");
+        logger.info(String.format("项目管家：执行类class : %s", cls.getName()));
+        logger.info(String.format("项目管家：执行方法method : %s", method.getName()));
         begin = System.currentTimeMillis();
     }
 
     @Override
     public void after(Class<?> cls, Method method, Object[] params) throws Exception {
         logger.info(String.format("time %dms", System.currentTimeMillis() - begin));
-        logger.info("---------------end--------------");
+        logger.info("项目管家：---------------end--------------");
     }
 }

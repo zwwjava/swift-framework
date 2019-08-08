@@ -84,6 +84,7 @@ public class DispatcherServlet extends HttpServlet {
             //java1.8新增属性 可通过形参名 反射默认值
             //Parameter[] parameters = action.getParameters();
             Object result;
+            //执行 请求路径对应的方法
             if (param.isEmpty()) {
                 result = ReflectionUtil.invokeMethod(controllerBean, action, new Param());
             } else {

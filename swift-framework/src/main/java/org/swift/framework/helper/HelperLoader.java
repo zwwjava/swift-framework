@@ -25,7 +25,6 @@ public class HelperLoader {
         };
         for (Class<?> clazz : classList) {
             ClassUtil.loadClass(clazz.getName());
-            System.out.println("初始化类成功" + clazz.getName());
             logger.info("初始化类成功" + clazz.getName());
         }
     }

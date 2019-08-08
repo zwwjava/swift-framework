@@ -21,13 +21,17 @@ import java.util.jar.JarFile;
 public class ClassUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(ClassUtil.class);
+    private static ClassLoader myClassLoader;
 
     /**
      * 获取类加载器
      * @return
      */
     public static ClassLoader getClassLoader() {
-        return Thread.currentThread().getContextClassLoader();
+        if (myClassLoader == null) {
+            myClassLoader = Thread.currentThread().getContextClassLoader();
+        }
+        return myClassLoader;
     }
 
     public static Class<?> loadClass(String className) {
@@ -42,7 +46,6 @@ public class ClassUtil {
     public static Class<?> loadClass(String className, boolean initialized) {
         Class<?> claz;
         try {
-            ClassLoader classLoader = getClassLoader();
             claz = Class.forName(className, initialized, getClassLoader());
         } catch (ClassNotFoundException e) {
             logger.error("类加载出错");
@@ -52,7 +55,7 @@ public class ClassUtil {
     }
 
     /**
-     * 加载包路径下所有类
+     * 加载包路径下所有类的Class 信息
      * @param packageName
      * @return
      */

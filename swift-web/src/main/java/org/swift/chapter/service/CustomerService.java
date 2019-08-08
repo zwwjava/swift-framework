@@ -73,7 +73,11 @@ public class CustomerService {
 	 */
 	@Transaction
 	public boolean createCustomer(Map<String, Object> customerMap) {
-		return DataBaseHelper.insertEntity(Weather.class,customerMap);
+		DataBaseHelper.insertEntity(Weather.class,customerMap);
+		if (true) {
+//			throw new RuntimeException();
+		}
+		return true;
 	}
 	
 	/*
