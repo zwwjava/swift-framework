@@ -69,14 +69,14 @@ public class ClassUtil {
                 if (url != null) {
                     //文件协议
                     String protocol = url.getProtocol();
-                    if(protocol != null && protocol.equals("file")) {
+                    if(("file").equals(protocol)) {
                         String packageUrl = url.getPath().replace("%20"," ");//替换空格
                         //递归添加子类的包的类
                         addClass(classSet, packageUrl, ConfigHelper.getAppBasePackage());
-                    } else if(protocol != null && protocol.equals("jar")) {
-                        JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
-                        if(jarURLConnection != null) {
-                            JarFile jarFile = jarURLConnection.getJarFile();
+                    } else if(("jar").equals(protocol)) {
+                        JarURLConnection jarUrlConnection = (JarURLConnection) url.openConnection();
+                        if(jarUrlConnection != null) {
+                            JarFile jarFile = jarUrlConnection.getJarFile();
                             if(jarFile != null) {
                                 Enumeration<JarEntry> jarEntrys = jarFile.entries();
                                 while (jarEntrys.hasMoreElements()) {
@@ -108,6 +108,7 @@ public class ClassUtil {
     private static void addClass(Set<Class<?>> classSet, String packageUrl, String packageName) {
         //返回一个File[] 经过文件的拦截
         File[] files = new File(packageUrl).listFiles(new FileFilter() {
+            @Override
             public boolean accept(File pathname) {
                 return (pathname.isFile() && pathname.getName().endsWith(".class")) || pathname.isDirectory();
             }

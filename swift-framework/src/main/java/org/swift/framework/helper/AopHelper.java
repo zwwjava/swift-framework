@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.swift.framework.annotation.Aspect;
 import org.swift.framework.annotation.Service;
-import org.swift.framework.proxy.AspecProxy;
+import org.swift.framework.proxy.AbstractAspecProxy;
 import org.swift.framework.proxy.Proxy;
 import org.swift.framework.proxy.ProxyManager;
 import org.swift.framework.proxy.TransactionProxy;
@@ -50,7 +50,7 @@ public class AopHelper {
 
     //添加切面代理
     private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
-        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspecProxy.class);
+        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AbstractAspecProxy.class);
         for (Class<?> proxyClass : proxyClassSet) {
             if (proxyClass.isAnnotationPresent(Aspect.class)) {
                 Aspect aspect = proxyClass.getAnnotation(Aspect.class);

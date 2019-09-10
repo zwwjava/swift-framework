@@ -82,7 +82,7 @@ public class DispatcherServlet extends HttpServlet {
             //调用action方法
             Method action = handler.getActionMethod();
             //java1.8新增属性 可通过形参名 反射默认值
-            //Parameter[] parameters = action.getParameters();
+            /*Parameter[] parameters = action.getParameters();*/
             Object result;
             //执行 请求路径对应的方法
             if (param.isEmpty()) {

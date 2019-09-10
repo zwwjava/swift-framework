@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.swift.framework.annotation.Aspect;
 import org.swift.framework.annotation.Controller;
-import org.swift.framework.proxy.AspecProxy;
+import org.swift.framework.proxy.AbstractAspecProxy;
 
 import java.lang.reflect.Method;
 
@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * @Date 2018/9/28 14:42
  */
 @Aspect(Controller.class)
-public class ControllerAspect extends AspecProxy {
+public class ControllerAspect extends AbstractAspecProxy {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
     private long begin;

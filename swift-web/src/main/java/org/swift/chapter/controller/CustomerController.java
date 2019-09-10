@@ -30,6 +30,16 @@ public class CustomerController {
         return new Data(list);
     }
 
+    @Action(value = "get:/helloView")
+    public View helloView(Param param) {
+//        List<Weather> list = customerService.getWeatherList();
+//        for (Weather weather : list) {
+//            System.out.println(weather);
+//        }
+//        System.out.println("hello " + list.size());
+        return new View("/temp.html");
+    }
+
     @Action(value = "get:/createHello")
     public void createHello(Param param) {
         Map<String, Object> customerMap = new HashMap<String, Object>();

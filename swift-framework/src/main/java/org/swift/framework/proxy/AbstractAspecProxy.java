@@ -10,9 +10,9 @@ import java.lang.reflect.Method;
  * @Author zhaww
  * @Date 2018/9/28 14:22
  */
-public abstract class AspecProxy implements Proxy {
+public abstract class AbstractAspecProxy implements Proxy {
 
-    private static final Logger logger = LoggerFactory.getLogger(AspecProxy.class);
+    private static final Logger logger = LoggerFactory.getLogger(AbstractAspecProxy.class);
 
     @Override
     public Object doProxy(ProxyChain proxyChain) throws Throwable {
@@ -42,7 +42,9 @@ public abstract class AspecProxy implements Proxy {
 
     public boolean intercept(Class<?> cls, Method method, Object[] params) throws Exception {
         String methodName = method.getName();
-        if (!methodName.equals("toString") || !methodName.equals("hashCode"))  return true;
+        if (!("toString").equals(methodName) || !("hashCode").equals(methodName))  {
+            return true;
+        }
         return false;
     }
 

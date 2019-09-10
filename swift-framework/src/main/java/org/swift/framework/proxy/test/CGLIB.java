@@ -15,6 +15,7 @@ public class CGLIB {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(CGLIB.class);
         enhancer.setCallback(new MethodInterceptor() {
+            @Override
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                 System.out.println("before");
                 Object result = methodProxy.invokeSuper(o, objects);

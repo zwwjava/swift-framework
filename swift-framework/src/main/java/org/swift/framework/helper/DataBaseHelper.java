@@ -22,7 +22,7 @@ public final class DataBaseHelper {
 
     //private static Connection conn;
     //apache提供的一个工具，通过反射把查询出的数据实体化
-    private static final QueryRunner queryRunner;
+    private static final QueryRunner QUERY_RUNNER;
     //每个线程享有独立的连接
     private static final ThreadLocal<Connection> CONNECTION_REGISTER;
     private static final BasicDataSource DATA_SOURCE;
@@ -33,7 +33,7 @@ public final class DataBaseHelper {
     private static final String PASSWORD;
 
     static {
-        queryRunner = new QueryRunner();
+        QUERY_RUNNER = new QueryRunner();
         CONNECTION_REGISTER = new ThreadLocal<Connection>();
         DATA_SOURCE = new BasicDataSource();
 
@@ -155,7 +155,7 @@ public final class DataBaseHelper {
         List<T> entityList = null;
         Connection conn = getConnection();
         try {
-            entityList = queryRunner.query(conn,sql,new BeanListHandler<T>(entityClass),params);
+            entityList = QUERY_RUNNER.query(conn,sql,new BeanListHandler<T>(entityClass),params);
             logger.info("查询：" + sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -190,7 +190,7 @@ public final class DataBaseHelper {
         T entity = null;
         Connection conn = getConnection();
         try {
-            entity = queryRunner.query(conn,sql,new BeanHandler<T>(entityClass),params);
+            entity = QUERY_RUNNER.query(conn,sql,new BeanHandler<T>(entityClass),params);
             logger.info("查询：" + sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -211,7 +211,7 @@ public final class DataBaseHelper {
         List<Map<String, Object>> list = null;
         Connection conn = getConnection();
         try {
-            list = queryRunner.query(conn,sql,new MapListHandler(),params);
+            list = QUERY_RUNNER.query(conn,sql,new MapListHandler(),params);
             logger.info("查询：" + sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -232,7 +232,7 @@ public final class DataBaseHelper {
         int row = 0;
         Connection conn = getConnection();
         try {
-            row = queryRunner.update(conn,sql,params);
+            row = QUERY_RUNNER.update(conn,sql,params);
             logger.info("查询：" + sql);
         } catch (SQLException e) {
             e.printStackTrace();

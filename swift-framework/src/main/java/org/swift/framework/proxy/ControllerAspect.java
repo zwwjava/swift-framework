@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * @Date 2018/9/28 14:42
  */
 @Aspect(Controller.class)
-public class ControllerAspect extends AspecProxy {
+public class ControllerAspect extends AbstractAspecProxy {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
     private long begin;

@@ -12,11 +12,11 @@ public class URLHandler {
     private Class<?> controllerClass;
 
     //Action类
-    private Method ActionMethod;
+    private Method actionMethod;
 
     public URLHandler(Class<?> controllerClass, Method actionMethod) {
         this.controllerClass = controllerClass;
-        this.ActionMethod = actionMethod;
+        this.actionMethod = actionMethod;
     }
 
     public Class<?> getControllerClass() {
@@ -24,6 +24,6 @@ public class URLHandler {
     }
 
     public Method getActionMethod() {
-        return ActionMethod;
+        return actionMethod;
     }
 }
