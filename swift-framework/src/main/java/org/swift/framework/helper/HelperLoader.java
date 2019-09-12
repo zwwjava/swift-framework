@@ -2,6 +2,7 @@ package org.swift.framework.helper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.swift.framework.helper.mq.MqHelper;
 import org.swift.framework.util.ClassUtil;
 
 /**
@@ -21,7 +22,8 @@ public class HelperLoader {
                 BeanHelper.class,
                 AopHelper.class,
                 ControllerHelper.class,
-                IocHelper.class
+                IocHelper.class,
+                MqHelper.class
         };
         for (Class<?> clazz : classList) {
             ClassUtil.loadClass(clazz.getName());
